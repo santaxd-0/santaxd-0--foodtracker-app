@@ -8,8 +8,8 @@ router = SimpleRouter()
 router.register(r"users", UserListAPI)
 
 urlpatterns = [
-    path("api/token/", views.TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/token/refresh/", views.TokenRefreshView.as_view(), name="token_refresh")
+    path("token/", views.TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("token/refresh/", views.TokenRefreshView.as_view(), name="token_refresh")
 ]
 
 urlpatterns += router.urls
