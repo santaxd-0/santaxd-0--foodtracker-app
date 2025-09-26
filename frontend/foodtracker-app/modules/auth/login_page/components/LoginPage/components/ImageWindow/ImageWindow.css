@@ -1,3 +1,7 @@
-.food-image{
-    height: 800px;
+.image-window-component img {
+    height: 100vh;
+    width: auto;
+    display: block;
+    object-fit: contain;
 }
+

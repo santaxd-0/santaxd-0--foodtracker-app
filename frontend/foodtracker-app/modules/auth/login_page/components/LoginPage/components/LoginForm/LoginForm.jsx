@@ -1,7 +1,11 @@
+import { Header } from "./components/Header/Header"
+import { Form } from "./components/Form/Form"
+
 export const LoginForm = () => {
     return (
         <div className="login-form-component">
-            This is login form window
+            < Header />
+            < Form />
         </div>
     )
 }
