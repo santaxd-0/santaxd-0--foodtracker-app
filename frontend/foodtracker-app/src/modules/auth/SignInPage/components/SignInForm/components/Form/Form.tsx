@@ -10,14 +10,15 @@ export const Form = ({children}: FormProps) => {
         <Box component="form"
             sx={{
                 border: 1,
-                borderColor: "black",
-                borderRadius: 1,
+                borderColor: "green",
+                borderRadius: 5,
+                borderWidth: 2,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
                 padding: 5,
-                gap: 2
+                gap: 2,
             }
         }>
             {children}
