@@ -1,4 +1,5 @@
 import { TextField } from "@mui/material"
+import React, { useState } from "react"
 
 interface InputFieldProps {
     label: string,
@@ -8,6 +9,12 @@ interface InputFieldProps {
 }
 
 export const UIInputField = ({ label, id, type, required }: InputFieldProps) => {
+    const [data, setData] = useState("");
+
+    const inputData = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setData(event.target.value);
+    }
+
     return (
         < TextField 
         id={id}
@@ -16,6 +23,8 @@ export const UIInputField = ({ label, id, type, required }: InputFieldProps) => 
         variant="outlined"
         fullWidth
         required={required}
+        value={data}
+        onInput={inputData}
         />
     )
 }

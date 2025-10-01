@@ -1,5 +1,5 @@
 import { Alert } from "@mui/material";
-import { UILink } from "../../../../../../../ui/UILink/index";
+import { UILink } from "../../../../../../../packages/ui/src/UILink/index";
 
 export const LinkToSignUp = () => {
     return (

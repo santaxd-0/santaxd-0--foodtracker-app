@@ -2,12 +2,16 @@ import { Box } from "@mui/material"
 import type { ReactNode } from "react"
 
 interface FormProps {
-    children: ReactNode;
+    children: ReactNode,
+    formMethod: "GET" | "POST",
+    actionUrl: string
 }
 
-export const UIForm = ({children}: FormProps) => {
+export const UIForm = ({children, formMethod, actionUrl}: FormProps) => {
     return (
         <Box component="form"
+            method={formMethod}
+            action={actionUrl}
             sx={{
                 border: 1,
                 borderColor: "green",

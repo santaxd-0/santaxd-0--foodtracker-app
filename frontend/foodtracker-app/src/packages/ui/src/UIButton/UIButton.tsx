@@ -3,10 +3,12 @@ import { Button } from "@mui/material";
 interface ButtonProps {
     buttonText: string,
     buttonVariant: "text" | "outlined" | "contained",
-    required: boolean
+    required: boolean,
+    buttonType?: "submit"
+    onClickEvent?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export const UIButton = ({ buttonText, buttonVariant, required}: ButtonProps) => {
+export const UIButton = ({ buttonText, buttonVariant, required, buttonType, onClickEvent}: ButtonProps) => {
     interface buttonStyleProps {
         required: boolean
     }
@@ -23,9 +25,11 @@ export const UIButton = ({ buttonText, buttonVariant, required}: ButtonProps) =>
         <Button 
         variant={buttonVariant}
         fullWidth
+        type={buttonType}
         sx = {
             buttonStyle({ required })
         }
+        onClick={onClickEvent}
         >
             {buttonText}
         </Button>

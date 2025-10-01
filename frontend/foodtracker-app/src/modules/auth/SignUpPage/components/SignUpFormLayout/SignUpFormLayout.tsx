@@ -1,11 +1,11 @@
-import { UIForm } from "../../../../../ui/UIForm"
-import { UITitle } from "../../../../../ui/UITitle"
-import { UIInputField } from "../../../../../ui/UIInputField" 
-import { UIButton } from "../../../../../ui/UIButton"
+import { UIForm } from "../../../../../packages/ui/src/UIForm"
+import { UITitle } from "../../../../../packages/ui/src/UITitle"
+import { UIInputField } from "../../../../../packages/ui/src/UIInputField" 
+import { UIButton } from "../../../../../packages/ui/src/UIButton"
 
 export const SignUpFormLayout = () => {
     return (
-        <UIForm>
+        <UIForm formMethod="POST" actionUrl="auth/register/">
             < UITitle text="Sign Up" />
             < UIInputField 
             label="Enter your email"
@@ -34,7 +34,8 @@ export const SignUpFormLayout = () => {
             required />
             <UIButton
              buttonText="Create an account" 
-             buttonVariant="contained" 
+             buttonVariant="contained"
+             buttonType="submit" 
              required/>
         </UIForm>
     )

@@ -1,0 +1,1 @@
+export const GET_TOKEN_URL = "api/v1/auth/token";
