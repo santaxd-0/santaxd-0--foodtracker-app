@@ -1,16 +1,16 @@
 import { Routes, Route } from "react-router-dom"
 import { SignIn } from "./pages/SignIn/SignIn"
 import { SignUp } from "./pages/SignUp/SignUp"
-
-import './App.css'
+import { AuthPagesLayout } from "./layout"
 
 
 const App = () => {
-
   return (
     <Routes>
-      <Route index element={< SignIn />}/>
-      <Route path="auth" element={< SignUp />}/>
+      <Route path="auth" element={< AuthPagesLayout />}>
+        <Route index element={< SignIn />}/>
+        <Route path="register" element={< SignUp />}/>
+      </Route>
     </Routes>
   )
 }

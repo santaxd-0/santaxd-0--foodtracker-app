@@ -4,7 +4,7 @@ import { UILink } from "../../../../../../../ui/UILink/index";
 export const LinkToSignUp = () => {
     return (
         <Alert variant="outlined" severity="info" color="success">
-            Don`t have an account? <UILink linkText="Sign up here"/>
+            Don`t have an account? <UILink linkText="Sign up here" linkPath="/auth/register"/>
         </Alert>
     )
 }
