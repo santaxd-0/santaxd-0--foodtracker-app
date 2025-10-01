@@ -1,13 +1,17 @@
 import { Box } from "@mui/material"
 
-export const Title = () => {
+interface TitleProps {
+    text: string
+}
+
+export const UITitle = ({ text }: TitleProps) => {
     return (
         <Box 
         component="h1"
         sx={{
             color: "black"
         }}>
-            Sign in
+            {text}
         </Box>
     )
 }

@@ -5,7 +5,7 @@ interface FormProps {
     children: ReactNode;
 }
 
-export const Form = ({children}: FormProps) => {
+export const UIForm = ({children}: FormProps) => {
     return (
         <Box component="form"
             sx={{
@@ -19,6 +19,8 @@ export const Form = ({children}: FormProps) => {
                 flexDirection: "column",
                 padding: 5,
                 gap: 2,
+                minWidth: 400,
+                maxWidth: 500
             }
         }>
             {children}

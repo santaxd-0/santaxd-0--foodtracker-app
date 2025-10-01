@@ -7,7 +7,7 @@ interface InputFieldProps {
     required: boolean
 }
 
-export const InputField = ({ label, id, type, required }: InputFieldProps) => {
+export const UIInputField = ({ label, id, type, required }: InputFieldProps) => {
     return (
         < TextField 
         id={id}
