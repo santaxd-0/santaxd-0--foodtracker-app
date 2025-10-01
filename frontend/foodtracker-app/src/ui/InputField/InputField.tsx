@@ -3,10 +3,11 @@ import { TextField } from "@mui/material"
 interface InputFieldProps {
     label: string,
     id: string,
-    type: string
+    type: string,
+    required: boolean
 }
 
-export const InputField = ({ label, id, type }: InputFieldProps) => {
+export const InputField = ({ label, id, type, required }: InputFieldProps) => {
     return (
         < TextField 
         id={id}
@@ -14,7 +15,7 @@ export const InputField = ({ label, id, type }: InputFieldProps) => {
         type={type}
         variant="outlined"
         fullWidth
-        required
+        required={required}
         />
     )
 }
