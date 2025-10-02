@@ -1,1 +1,1 @@
-export const GET_TOKEN_URL = "api/v1/auth/token";
+export const SIGN_IN_URL = "http://localhost:5173/auth";

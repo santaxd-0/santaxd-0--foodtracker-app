@@ -15,12 +15,10 @@ export const SignUpFormLayout = () => {
             < UIInputField 
             label="Enter your username"
             id="username-field"
-            type=""
             required />
             < UIInputField 
             label="Enter your first name"
             id="first-name-field"
-            type=""
             required />
             < UIInputField 
             label="Enter your password"
