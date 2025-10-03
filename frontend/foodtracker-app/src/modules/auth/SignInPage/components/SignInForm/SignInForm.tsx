@@ -11,26 +11,17 @@ import { MAIN_PAGE_URL } from "../../../../../constants/app/constants";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { setInputWarning } from "./hooks/setInputWarning";
+import { showAlertMessage } from "./hooks/showAlertMessage";
+import { useUserLogin } from "./hooks/useUserLogin";
 
 
 export const SignInForm = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [color, setColor] = useState<"success" | "warning">("success");
-    const [focused, setFocused] = useState(false);
-    const [alert, setAlert] = useState(false);
-    const [alertMessage, setAlertMessage] = useState("");
+    const {email, password, setEmail, setPassword} = useUserLogin();
+    const {color, focused, setWarning, resetWarning} = setInputWarning();
+    const {alert, alertMessage, showAlert} = showAlertMessage();
+
     const navigate = useNavigate();
-
-    const showAlert = (alertMessage : string) => {
-        setAlert(true);
-        setAlertMessage(alertMessage);
-    }
-
-    const setWarning = () => {
-        setColor("warning");
-        setFocused(true);
-    }
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -45,7 +36,7 @@ export const SignInForm = () => {
             localStorage.setItem("access", response.data.access);
             localStorage.setItem("refresh", response.data.refresh);
             if (localStorage.getItem("access") && localStorage.getItem("refresh")){
-                navigate("");
+                resetWarning();
                 navigate(MAIN_PAGE_URL);
             }
         })
@@ -53,22 +44,16 @@ export const SignInForm = () => {
             setWarning();
             if (error.response) {
                 /* NOTE: If server response with status code not 2xx */
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
                 showAlert("Your email or password is wrong! Please try again!");
             }
             else if (error.request) {
                 /* NOTE: If request was done but response were not given */
                 showAlert("Something went wrong. Please try again!");
-                console.log(error.request);
             }
             else {
                 /* NOTE: Something happened while providing request */
                 showAlert("Something went wrong. Please try again!");
-                console.log(error.message);
             }
-            console.log(error.config);
         });
     }
 
