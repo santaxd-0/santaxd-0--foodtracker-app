@@ -7,8 +7,9 @@ import { Alert } from "@mui/material"
 import { useUserSignUp } from "../../hooks/useUserSignUp"
 import { onInputField } from "../../../../../packages/ui/src/UIInputField/hooks/onInputField"
 import { USER_REGISTER_API } from "../../../../../packages/api/src/auth/auth_apis"
-import { setInputWarning, showAlertMessage } from "../../../SignInPage"
+import { setInputWarning, showAlertMessage } from "../../../SignIn"
 import { useNavigate } from "react-router-dom"
+import { onSubmitSignUp } from "../../utils/onSubmitSignUp"
 
 export const SignUpFormLayout = () => {
     const {email, username, firstName, password, checkPassword,
@@ -18,7 +19,9 @@ export const SignUpFormLayout = () => {
     const navigate = useNavigate();
 
     return (
-        <UIForm formMethod="POST" actionUrl={USER_REGISTER_API}>
+        <UIForm formMethod="POST" actionUrl={USER_REGISTER_API}
+        onSubmit={(e) => onSubmitSignUp({e, props: {fields: {email, password, username, firstName}, 
+        setWarning, resetWarning, showAlert, navigate}})}>
             < UITitle text="Sign Up" />
             < UIInputField 
             label="Enter your email"

@@ -3,14 +3,14 @@ import { GET_TOKEN_URL_API } from "../../../../packages/api/src/auth/auth_apis";
 import { MAIN_PAGE_URL } from "../../../../constants/app/constants";
 import type { useNavigate } from "react-router-dom";
 
-interface APIFields {
+export interface APIFields {
     email: string;
     password: string;
     username?: string;
     firstName?: string;
 }
 
-interface onSubmitProps {
+export interface onSubmitProps {
     fields: APIFields;
     setWarning: () => void;
     resetWarning: () => void;
@@ -18,13 +18,16 @@ interface onSubmitProps {
     navigate: ReturnType<typeof useNavigate>;
 }
 
-export const onSubmit = ({ e, props }: { e: React.FormEvent<HTMLFormElement>; props: onSubmitProps }) => {
+export const onSubmitSignIn = ({ e, props }: { e: React.FormEvent<HTMLFormElement>; props: onSubmitProps }) => {
     e.preventDefault();
     // email: test_admin@example.com
     // password: 123456
 
     // user2@example.com
-    // 123
+    // User2123
+
+    // user3@example.com
+    // User3123
 
     axios.post(GET_TOKEN_URL_API, {
         email: props.fields.email,

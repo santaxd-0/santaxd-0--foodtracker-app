@@ -1,4 +1,4 @@
-import { SignInForm } from '../../modules/auth/SignInPage';
+import { SignInForm } from '../../modules/auth/SignIn';
 
 export const SignIn = () => {
     return (

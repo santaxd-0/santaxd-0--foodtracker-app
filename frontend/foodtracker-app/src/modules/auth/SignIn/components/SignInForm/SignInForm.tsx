@@ -10,7 +10,7 @@ import { GET_TOKEN_URL_API } from "../../../../../packages/api/src/auth/auth_api
 import { setInputWarning } from "../../hooks/setInputWarning";
 import { showAlertMessage } from "../../hooks/showAlertMessage";
 import { useUserLogin } from "../../hooks/useUserLogin";
-import { onSubmit } from "../../utils/onSubmit";
+import { onSubmitSignIn } from "../../utils/onSubmitSignIn";
 import { useNavigate } from "react-router-dom";
 
 
@@ -22,7 +22,8 @@ export const SignInForm = () => {
 
     return (
         <UIForm formMethod="POST" actionUrl={GET_TOKEN_URL_API}
-         onSubmit={(e) => onSubmit({e, props: {fields: {email, password}, setWarning, resetWarning, showAlert, navigate}})}>
+         onSubmit={(e) => onSubmitSignIn({e, props: {fields: {email, password}, 
+         setWarning, resetWarning, showAlert, navigate}})}>
             <UITitle text="Sign in"/>
             <UIInputField label={"Email"} id={"email-field"} type="email" required
             data={email} onInput={(e) => onInputField({event: e, setter: setEmail})}

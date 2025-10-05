@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material"
-import { ImageContainer } from "../../modules/auth/SignInPage"
+import { ImageContainer } from "../../modules/auth/SignIn"
 import { Outlet } from "react-router-dom"
 
 export const AuthPagesLayout = () => {

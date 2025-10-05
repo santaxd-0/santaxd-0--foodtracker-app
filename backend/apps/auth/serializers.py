@@ -14,4 +14,12 @@ class UserSerializer(serializers.ModelSerializer):
             "last_login",
             "is_superuser",
             "is_active",
+            "password",
+            "is_staff"
         ]
+
+    def create(self, validated_data):
+        user = User(**validated_data)
+        user.set_password(validated_data['password'])  # Явно хешируем
+        user.save()
+        return user
