@@ -20,14 +20,6 @@ export interface onSubmitProps {
 
 export const onSubmitSignIn = ({ e, props }: { e: React.FormEvent<HTMLFormElement>; props: onSubmitProps }) => {
     e.preventDefault();
-    // email: test_admin@example.com
-    // password: 123456
-
-    // user2@example.com
-    // User2123
-
-    // user3@example.com
-    // User3123
 
     axios.post(GET_TOKEN_URL_API, {
         email: props.fields.email,

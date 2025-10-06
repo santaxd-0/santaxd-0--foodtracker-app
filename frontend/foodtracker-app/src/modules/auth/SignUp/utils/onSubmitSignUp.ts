@@ -21,8 +21,10 @@ export const onSubmitSignUp = ({ e, props }: { e: React.FormEvent<HTMLFormElemen
             .then((response) => {
                 localStorage.setItem("access", response.data.access);
                 localStorage.setItem("refresh", response.data.refresh);
-                props.resetWarning();
-                props.navigate(MAIN_PAGE_URL);
+                if (localStorage.getItem("access") && localStorage.getItem("refresh")) {
+                    props.resetWarning();
+                    props.navigate(MAIN_PAGE_URL);
+                }
             })
             .catch((error) => {
                 props.setWarning();
