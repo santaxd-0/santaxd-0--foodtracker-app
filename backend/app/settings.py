@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+from .jwt_token.jwt_token_settings import JWT_TOKEN
 
 load_dotenv()
 
@@ -150,3 +151,5 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
 }
+
+SIMPLE_JWT = JWT_TOKEN
