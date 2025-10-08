@@ -1,4 +1,4 @@
-from ..utils.redis import redis_client
+from ..redis_md import redis_client
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.conf import settings
 

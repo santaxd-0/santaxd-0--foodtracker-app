@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
-from .jwt_token.jwt_token_settings import JWT_TOKEN
+from apps.auth.utils.jwt_token.jwt_token_settings import JWT_TOKEN
 
 load_dotenv()
 
