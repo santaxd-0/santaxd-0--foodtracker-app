@@ -12,10 +12,6 @@ class UserSerializer(serializers.ModelSerializer):
             "slug",
             "first_name",
             "last_login",
-            "is_superuser",
-            "is_active",
-            "password",
-            "is_staff"
         ]
 
     def create(self, validated_data):

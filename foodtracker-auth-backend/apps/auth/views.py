@@ -11,12 +11,6 @@ class UserListAPI(viewsets.ModelViewSet):
     lookup_field = "slug"
     authentication_classes = [authentication.JWTTokenUserAuthentication]
 
-    def get_permissions(self):
-         if self.action in ["create", "partial_update"]:
-             return [permissions.AllowAny()]
-         else:
-             return [permissions.IsAdminUser()]
-
     def get_queryset(self):
         if self.request.user.is_staff:
             return User.objects.all()
