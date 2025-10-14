@@ -1,7 +1,8 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Post, Body, HttpCode } from "@nestjs/common";
 import { CoreService } from "./core.service";
 
 import type { Panel } from "./interfaces/panel.interface";
+import type { CreatePanelDto } from "./dto/create-panel.dto";
 
 
 @Controller("main")
@@ -9,7 +10,13 @@ export class CoreController {
     constructor(private readonly coreService: CoreService) {}
 
     @Get()
-    getList(): Panel {
-        return this.coreService.getList();
+    getPanel(): Panel[] {
+        return this.coreService.getPanel();
+    }
+
+    @Post()
+    @HttpCode(201)
+    createPanel(@Body() createPanelDto: CreatePanelDto) {
+        this.coreService.createPanel(createPanelDto);
     }
 }
