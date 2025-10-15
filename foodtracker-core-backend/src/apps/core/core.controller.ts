@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, HttpCode } from "@nestjs/common";
 import { CoreService } from "./core.service";
 
 import type { Panel } from "./interfaces/panel.interface";
-import type { CreatePanelDto } from "./dto/create-panel.dto";
+import { CreatePanelDto } from "./dto/create-panel.dto";
 
 
 @Controller("main")

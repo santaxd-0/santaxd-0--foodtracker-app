@@ -1,4 +1,4 @@
-import { Body, Get, HttpCode, Injectable, Post } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import type { Panel } from "./interfaces/panel.interface";
 
 
