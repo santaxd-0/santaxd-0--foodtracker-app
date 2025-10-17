@@ -1,16 +1,11 @@
-import { IsNotEmpty, IsNumber, IsUrl, MaxLength, Min } from "class-validator"
+import { IsNotEmpty, IsUrl, MaxLength} from "class-validator"
 
 export class CreateProductDto {
-    @IsNotEmpty()
-    @IsNumber()
-    id: number
-
     @IsNotEmpty()
     @MaxLength(20)
     name: string
 
     @IsNotEmpty()
-    @Min(0)
     callories: number
 
     @IsUrl()

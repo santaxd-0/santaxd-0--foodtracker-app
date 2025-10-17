@@ -1,4 +1,4 @@
-import { IsArray, IsInt, IsNotEmpty, IsString, MaxLength, ValidateNested, IsEnum } from "class-validator";
+import { IsArray, IsInt, IsNotEmpty, IsString, MaxLength, ValidateNested, IsEnum, IsDate } from "class-validator";
 import { CreateProductDto } from "./create-product.dto"
 import { Type } from "class-transformer";
 
@@ -19,7 +19,6 @@ export class CreatePanelDto {
     @IsNotEmpty()
     productList: Array<CreateProductDto>;
 
-    @IsEnum(['red', 'green'])
     @IsNotEmpty()
-    color: "red" | "green";
+    ownerId: number
 }

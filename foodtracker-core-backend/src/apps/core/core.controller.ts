@@ -1,8 +1,10 @@
 import { Controller, Get, Post, Body, HttpCode } from "@nestjs/common";
 import { CoreService } from "./core.service";
 
-import type { Panel } from "./interfaces/panel.interface";
 import { CreatePanelDto } from "./dto/create-panel.dto";
+import { Panel } from "./schemas/panel.schema";
+import { CreateProductDto } from "./dto/create-product.dto";
+import { Product } from "./schemas/product.schema";
 
 
 @Controller("main")
@@ -10,7 +12,7 @@ export class CoreController {
     constructor(private readonly coreService: CoreService) {}
 
     @Get()
-    getPanel(): Panel[] {
+    getPanel(): Promise<Panel[]> {
         return this.coreService.getPanel();
     }
 
@@ -18,5 +20,16 @@ export class CoreController {
     @HttpCode(201)
     createPanel(@Body() createPanelDto: CreatePanelDto) {
         this.coreService.createPanel(createPanelDto);
+    }
+
+    @Post("/create-product")
+    @HttpCode(201)
+    createProduct(@Body() createProductDto: CreateProductDto){
+        this.coreService.createProduct(createProductDto);
+    }
+
+    @Get("/products")
+    getProducts(): Promise<Product[]>{
+        return this.coreService.getProducts();
     }
 }
