@@ -1,35 +1,40 @@
-import { Controller, Get, Post, Body, HttpCode } from "@nestjs/common";
-import { CoreService } from "./core.service";
+import { Controller, Get, Post, Body, HttpCode } from '@nestjs/common';
+import { PanelService } from './core.service';
+import { ProductService } from './core.service';
 
-import { CreatePanelDto } from "./dto/create-panel.dto";
-import { Panel } from "./schemas/panel.schema";
-import { CreateProductDto } from "./dto/create-product.dto";
-import { Product } from "./schemas/product.schema";
+import { CreatePanelDto } from './dto/create-panel.dto';
+import { Panel } from './schemas/panel.schema';
+import { CreateProductDto } from './dto/create-product.dto';
+import { Product } from './schemas/product.schema';
 
+@Controller('panels')
+export class PanelsController {
+  constructor(private readonly coreService: PanelService) {}
 
-@Controller("main")
-export class CoreController {
-    constructor(private readonly coreService: CoreService) {}
+  @Get()
+  getPanel(): Promise<Panel[]> {
+    return this.coreService.getPanel();
+  }
 
-    @Get()
-    getPanel(): Promise<Panel[]> {
-        return this.coreService.getPanel();
-    }
+  @Post()
+  @HttpCode(201)
+  createPanel(@Body() createPanelDto: CreatePanelDto) {
+    this.coreService.createPanel(createPanelDto);
+  }
+}
 
-    @Post()
-    @HttpCode(201)
-    createPanel(@Body() createPanelDto: CreatePanelDto) {
-        this.coreService.createPanel(createPanelDto);
-    }
+@Controller('products')
+export class ProductsController {
+  constructor(private readonly productsService: ProductService) {}
 
-    @Post("/create-product")
-    @HttpCode(201)
-    createProduct(@Body() createProductDto: CreateProductDto){
-        this.coreService.createProduct(createProductDto);
-    }
+  @Get()
+  getProduct(): Promise<Product[]> {
+    return this.productsService.getProducts();
+  }
 
-    @Get("/products")
-    getProducts(): Promise<Product[]>{
-        return this.coreService.getProducts();
-    }
+  @Post()
+  @HttpCode(201)
+  createProduct(@Body() createProductDto: CreateProductDto) {
+    this.productsService.createProduct(createProductDto);
+  }
 }

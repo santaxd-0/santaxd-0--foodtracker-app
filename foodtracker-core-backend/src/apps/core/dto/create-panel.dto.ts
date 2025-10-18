@@ -1,24 +1,27 @@
-import { IsArray, IsInt, IsNotEmpty, IsString, MaxLength, ValidateNested, IsEnum, IsDate } from "class-validator";
-import { CreateProductDto } from "./create-product.dto"
-import { Type } from "class-transformer";
-
+import {
+  IsArray,
+  IsInt,
+  IsNotEmpty,
+  IsString,
+  MaxLength,
+  IsMongoId,
+} from 'class-validator';
 
 export class CreatePanelDto {
-    @MaxLength(20)
-    @IsString()
-    @IsNotEmpty()
-    name: string;
+  @MaxLength(20)
+  @IsString()
+  @IsNotEmpty()
+  name: string;
 
-    @IsInt()
-    @IsNotEmpty()
-    callories: number;
+  @IsInt()
+  @IsNotEmpty()
+  callories: number;
 
-    @IsArray()
-    @ValidateNested({ each: true })
-    @Type(() => CreateProductDto)
-    @IsNotEmpty()
-    productList: Array<CreateProductDto>;
+  @IsArray()
+  @IsMongoId({ each: true })
+  @IsNotEmpty()
+  productList: Array<string>;
 
-    @IsNotEmpty()
-    ownerId: number
+  @IsNotEmpty()
+  ownerId: number;
 }
