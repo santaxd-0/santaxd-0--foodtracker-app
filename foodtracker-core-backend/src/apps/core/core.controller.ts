@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpCode, UseGuards, Request } from '@nestjs/common';
 import { PanelService } from './core.service';
 import { ProductService } from './core.service';
 
@@ -6,6 +6,8 @@ import { CreatePanelDto } from './dto/create-panel.dto';
 import { Panel } from './schemas/panel.schema';
 import { CreateProductDto } from './dto/create-product.dto';
 import { Product } from './schemas/product.schema';
+import { Ctx, MessagePattern, Payload, RmqContext } from '@nestjs/microservices';
+import type { rmqData } from './interfaces/rmqData.interface';
 
 @Controller('panels')
 export class PanelsController {
@@ -18,8 +20,16 @@ export class PanelsController {
 
   @Post()
   @HttpCode(201)
-  createPanel(@Body() createPanelDto: CreatePanelDto) {
-    this.coreService.createPanel(createPanelDto);
+  @UseGuards()
+  createPanel(@Body() createPanelDto: CreatePanelDto, @Request() req) {
+    const userId = req.user.id;
+    this.coreService.createPanel(createPanelDto, userId);
+  }
+
+  @MessagePattern("User created")
+  handleUserCreated(@Payload() data: rmqData, @Ctx() context: RmqContext) {
+    console.log("User was created" + data.id);
+    this.coreService.handleUserCreated(data);
   }
 }
 

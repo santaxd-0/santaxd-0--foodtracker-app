@@ -27,7 +27,11 @@ class UserSerializer(serializers.ModelSerializer):
             "email": user.email,
             "username": user.username,
         }
-        message = json.dumps(message_properties)
+        nest_message_type = {
+            "pattern": "User created",
+            "data": message_properties
+        }
+        message = json.dumps(nest_message_type)
         auth_handler.send_message("User created", message) # type: ignore
-        
+        print("Message was sent to the core microservice")
         return user
