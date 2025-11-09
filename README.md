@@ -29,8 +29,6 @@ The project includes:
 - 💻 **React frontend** for the web
 - 🍏 *(Experimental)* **Swift desktop app** for iOS/macOS clients
 
-> 🖼️ *Architecture diagram goes here (insert your image later)*
-
 ---
 
 ## 🚀 Features
@@ -86,8 +84,6 @@ Even though the app is still **in development**, it reflects:
 - ✅ Nutrition database integration  
 - ✅ UI improvements (Tailwind / Material UI)  
 - ✅ Documentation and test coverage  
-
----
 
 ## 🪄 Quick Start
 
